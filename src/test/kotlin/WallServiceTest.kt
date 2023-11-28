@@ -1,21 +1,32 @@
 import org.junit.Test
 import org.junit.Assert.*
 
+
+
 class WallServiceTest {
 
     @Test
-    fun add(post: Post) {
-var post1 = Post(comments = Comments(), copyright = " ", likes = Likes(), repost = Reposts())
-        add( post1)
-val result = (post.id >0)
+    fun testAdd() {
+val post1 = Post(comments = Comments(), copyright = " ", likes = Likes(), repost = Reposts(), text = "yes")
+        WallService.add( post1)
+val result = (WallService.idCounter)
 
 
-        assertEquals (true,result  )
+        assertEquals (2, result )
     }
 
     @Test
-    fun update(i: Int) {
-      val  result = update(1)
+
+    fun testUpdate() {
+
+        val post1 = Post()
+        val post2 = Post()
+        val post4 = Post()
+        val post5 = Post()
+        val post3 = Post(id=1, text = "88")
+        WallService.add(post1)
+        WallService.add(post2)
+      val  result = WallService.update(post3)
         assertEquals(false, result)
 
     }
