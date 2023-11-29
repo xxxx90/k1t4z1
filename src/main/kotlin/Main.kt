@@ -68,8 +68,14 @@ object WallService {
 
         for ((index, postInArray) in posts.withIndex()) {
             //println(postInArray)
-            if (postInArray.id == id) {
-                posts[index] = post.copy(ownerId = 1, fromId = 2, friendsOnly = true, text = "------", repost = post.repost.copy(count = 5, userReposted = true))
+            if (postInArray.id == post.id) {
+                posts[index] = post.copy(
+                    ownerId = 1,
+                    fromId = 2,
+                    friendsOnly = true,
+                    text = "update",
+                    repost = post.repost.copy(count = 5, userReposted = true)
+                )
                 return true
             }
         }
@@ -107,4 +113,11 @@ object WallService {
 
         }
     }
+
+    fun clear() {
+        posts = emptyArray()
+        idCounter = 0
+
+    }
+
 }
